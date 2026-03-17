@@ -12,7 +12,13 @@ export default defineNavbarConfig([
   { text: '标签', link: '/blog/tags/' },
   { text: '归档', link: '/blog/archives/' },
   {
-    text: '笔记',
-    items: [{ text: '示例', link: '/demo/README.md' }]
+    text: '知识库',
+    items: [
+      { text: 'Web 安全', link: '/web/' },
+      { text: '密码学', link: '/crypto/' },
+      { text: 'Pwn', link: '/pwn/' },
+      { text: '逆向工程', link: '/reverse/' },
+      { text: '杂项', link: '/misc/' },
+    ]
   },
 ])
