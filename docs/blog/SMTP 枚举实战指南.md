@@ -79,6 +79,7 @@ sudo apt install smtp-user-enum
 sudo smtp-user-enum -M VRFY -u msfadmin -t 192.168.1.58
 ```
  ![alt text](kali-201.webp)
+ 
 > **结果：** 如果返回结果显示该用户存在，说明该用户名是有效的。
 
 #### 多用户枚举（字典攻击）
@@ -88,7 +89,8 @@ sudo smtp-user-enum -M VRFY -u msfadmin -t 192.168.1.58
 ```bash
 sudo smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/common_roots.txt -t 192.168.1.58
 ```
- ![alt text](kali-202.webp)
+![alt text](kali-202.webp)
+
 #### 枚举有效邮件地址
 
 使用 `-D` 参数指定邮件域名来查找完整的邮件地址：
@@ -97,6 +99,7 @@ sudo smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/common_roots.txt 
 sudo smtp-user-enum -M VRFY -D metasploitable.localdomain -U /usr/share/wordlists/metasploit/common_roots.txt -t 192.168.1.58
 ```
  ![alt text](kali-203.webp)
+ 
 -----
 
 ### 2\. 使用 Nmap 进行 SMTP 枚举
@@ -108,12 +111,14 @@ Nmap 不仅是端口扫描器，还拥有强大的 NSE 脚本库。
 ls -al /usr/share/nmap/scripts/ | grep -e "smtp"
 ```
  ![alt text](kali-204.webp)
+ 
 **使用 `smtp-enum-users.nse` 脚本：**
 
 ```bash
 nmap --script smtp-enum-users.nse 192.168.1.58
 ```
  ![alt text](kali-205.webp)
+ 
 -----
 
 ### 3\. 使用 Metasploit 进行 SMTP 枚举
