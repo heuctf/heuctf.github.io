@@ -1,6 +1,5 @@
 
 
------
 
 # 密码破解工具 - John The Ripper (JTR) 实战案例
 
