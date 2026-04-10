@@ -82,7 +82,6 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
 
 -----
 ![alt text](6.-Start-Exploit.webp)
-
 ## 3\. 通过编辑 WordPress 主题建立反弹 Shell
 
 这种方法非常有趣，因为**不需要任何框架或第三方工具**。其核心逻辑是：
