@@ -172,4 +172,4 @@ $ john --wordlist=/usr/share/wordlists/crypton.txt zip.hashes
 **延伸阅读：**
 
   * [Hashcat 使用指南]
-  * [Kali Linux 基础教程]
+  * [Kali Linux 基础教程]<img width="153" height="35" alt="image" src="https://github.com/user-attachments/assets/3916e2a8-158d-4efd-927b-eee177874e4f" />
