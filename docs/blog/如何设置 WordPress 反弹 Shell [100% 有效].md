@@ -1,4 +1,3 @@
-
 # 如何设置 WordPress 反弹 Shell [100% 有效]
 
 > **作者：** heuctf
