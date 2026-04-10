@@ -1,6 +1,3 @@
-这是一篇关于如何设置 **WordPress 反弹 Shell (Reverse Shell)** 的深度实战指南。我已经为你完成了全文的汉化，并保留了原有的结构与技术细节。
-
------
 
 # 如何设置 WordPress 反弹 Shell [100% 有效]
 
